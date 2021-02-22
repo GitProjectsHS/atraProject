@@ -1,0 +1,103 @@
+/* <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> */
+.card{
+  width: 286px;
+  height: 440px;
+  vertical-align: top;
+}
+#validPass ,#validMail{
+  color: red;
+}
+.upload__image-wrapper{
+  display: flex;
+}
+#mycard{
+  width: 18rem;
+   display:inline-block
+}
+.nav {
+  width: 100%;
+  height: 50px;
+  background: rgba(0,0,0, .8);
+  border-top: 1px solid rgba(255,255,255, .2);
+  border-bottom: 1px solid rgba(255,255,255, .2);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  
+}
+
+.nav-link {
+  display: block;
+  padding: .5rem 1rem;
+  width: max-content;
+}
+.divBtn{
+  position: fixed;
+    top: 0;
+}
+.heartTop{
+  position: absolute;
+  bottom:0;
+  left:36%;
+}
+/* .drop{
+  width: 70px;
+} */
+
+
+.deleteIcon{
+  position: absolute;
+  bottom:0;
+  left: 36%;
+}
+.App {
+  text-align: center;
+}
+.UserDitailes{
+  text-align: left;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.wrapper {
+  padding: 20px;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 95vh;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-top:5vh;
+  
+}
+.makeStyles-root-33 {
+  max-width: 40%;
+  margin-left: 26%;}
+.MuiTab-wrapper{
+  font-weight: bold;
+
+}
+a:link {
+  text-decoration: none;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
