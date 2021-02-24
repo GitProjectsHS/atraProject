@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux';
 import { actions } from '../Redux/Store/Actions'
 import { Link, useHistory } from "react-router-dom";
-// import {signUp} from '../service'
 import axios from 'axios'
 import $ from 'jquery'
 
@@ -28,7 +27,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
         email: "",
         password: ""
     })
-    const [myUser, setMyUser] = useState('userStart')
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
@@ -37,18 +35,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
     }, []);
 
     useEffect(() => {
-        setId(myUser)
-    }, [myUser]);
-
-    useEffect(() => {
         $("#validPass").hide();
         $("#validMail").hide();
     }, []);
 
-    function updateID(id) {
-        setId(id)
-        console.log('fggfgfgf', user.userId)
-    }
 
     const handleChange = (e) => {
         $("#validPass").hide();
@@ -60,13 +50,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
     }
     async function Submit(e) {
         e.preventDefault()
-        debugger
-        console.log(user.userId + "setid userrrrrrrrrrr")
-        //TO DO
         const userLogin = { password: passwordRef.current.value, email: emailRef.current.value };
-        console.log("userLogin", userLogin)
-        // export async function signUp(user) {
-        debugger
 
         await axios.post('http://localhost:3500/login', userLogin).then(
             res => {
@@ -79,18 +63,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
                         $("#validMail").show();
                     }
                     if (res.data.myUser) {
-                        debugger;
-                        //updateID(res.data.myUser._id)
-                        const id = res.data.myUser._id
-                        // setMyUser(id);
-                        // console.log('myUserrrrrrrrrrrr', user.userId, res.data.myUser._id, myUser)
                         setId(res.data.myUser._id)
-                        console.log(content.title, "contentttt", user.userId + "user iddddddddddddddddddd")
-                        console.log('dataaaaaaaaaaaaaaaaaaaaa', JSON.stringify(res.data.myUser._id));
                         history.push("/Pictures");
                     } else
                         console.log("data is null")
-                    // return "data is null";
                 }
             }
             ,
@@ -99,19 +75,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
                 return false;
             }
         )
-        // }
-
-
-        //     const a= await signUp({ password: passwordRef.current.value, email: emailRef.current.value })
-        //  debugger
-        //     console.log('a',a)
-
-
-        // גרוע לצמיתות :)console.log(signUp({ password: passwordRef.current.value, email: emailRef.current.value } + "submitttttt"))
-        // if(await signUp({ password: passwordRef.current.value, email: emailRef.current.value }) === "user found")   
-        // {
-        //     <Redirect to='/Pictures'/>
-        // }   
     }
 
 
@@ -156,32 +119,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Login(props
         </div>
     )
 })
-
- // const sendDetailsToServer = () => {
-    //     if(state.email.length && state.password.length) {
-    //         props.showError(null);
-    //         const payload={
-    //             "email":state.email,
-    //             "password":state.password,
-    //         }
-    //         axios.post(process.nextTick.API_BASE_URL+'/user/register', payload)
-    //             .then(function (response) {
-    //                 if(response.status === 200){
-    //                     setState(prevState => ({
-    //                         ...prevState,
-    //                         'successMessage' : 'Registration successful. Redirecting to home page..'
-    //                     }))
-    //                     redirectToHome();
-    //                     props.showError(null)
-    //                 } else{
-    //                     props.showError("Some error ocurred");
-    //                 }
-    //             })
-    //             .catch(function (error) {
-    //                 console.log(error);
-    //             });    
-    //     } else {
-    //         props.showError('Please enter valid username and password')    
-    //     }
-
-    // }

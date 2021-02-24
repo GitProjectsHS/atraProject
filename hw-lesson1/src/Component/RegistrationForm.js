@@ -42,10 +42,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Registratio
 
     function sendDetils() {
         if (emailRef.current.value != '' && passwordRef.current.value === passwordConfirmRef.current.value) {
-            console.log('sendDetils', emailRef.current.value, passwordRef.current.value)
             createUser({ email: emailRef.current.value, password: passwordRef.current.value, name: nameRef.current.value });
         }
-        else {//To Do
+        else {
             if (emailRef.current.value === '')
                 console.log('email is null');
             else

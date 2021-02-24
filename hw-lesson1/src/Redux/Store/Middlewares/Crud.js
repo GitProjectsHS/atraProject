@@ -1,17 +1,14 @@
-import { actions } from '../Actions'
+// import { actions } from '../Actions
 
 
+// move api call after click on deled button
+// export  const getDataFromMongo =  ({ dispatch, getState }) => next => action => {
+    
+//             dispatch(actions.getData(res))
+       
+//           return next(action)
+//     }
+  
 
-export const delayFunc = ({ dispatch, getState }) => next => action => {
-    if (action.type === 'SET_COMPANY_CITY1') {
-        setTimeout(() => {
-            dispatch(actions.setCompanyCity(action.payload))
-        }, action.meta.delay)
-
-
-    }
-
-    return next(action)
-}
 
 

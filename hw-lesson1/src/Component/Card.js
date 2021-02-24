@@ -3,7 +3,6 @@ import { createPicture } from '../service'
 
 
 const like = (index) => {
-  debugger
   createPicture({ idPic: index.id, url: index.url, title: index.title, thumbnailUrl: index.thumbnailUrl });
 }
 

@@ -6,7 +6,6 @@ const createPicture = async (req, res) => {
     let pic = await Picture.findOne({ idPic: req.body.idPic })
     if (!pic) {
       const id = req.body.id;
-
       pic = await new Picture({ idPic: req.body.idPic, title: req.body.title, url: req.body.url, thumbnailUrl: req.body.thumbnailUrl })//,owner:Picture.owner.push(id)
       await pic.save().then((pic) => {
         res.status(200).json({ message: 'picture created', newpic: pic })
@@ -14,19 +13,16 @@ const createPicture = async (req, res) => {
         res.status(400).send('error!')
       })
     }
-    //----------------------------------------push to arrays----------------------------------
-    //take user to add picture
-    //To do change to req
-    const idPict = await User.findById('602d6da9cbf75848188a2a5d').populate
+
+    const idPict = await User.findById(req.body.id).populate
       ({ path: 'pictures', match: { url: pic.url } })
     if (idPict.pictures == '') {
-      const user = await User.findById('602d6da9cbf75848188a2a5d')
+      const user = await User.findById(req.body.id)
       pic.owner.push(user)
       await pic.save().then((pic) => {
       }).catch((err) => {
         res.status(400).send('error saved')
       })
-      //put the new picture
       user.pictures.push(pic);
       await user.save().then((user) => {
         res.status(200).json({ message: 'picture created', userWithPic })
@@ -62,7 +58,7 @@ const deletePic = async (req, res) => {
 
 const getPicFromUser = async (req, res) => {
   try {
-    const pic = await User.findById('602d6da9cbf75848188a2a5d').populate('pictures');
+    const pic = await User.findById(req.body).populate('pictures');
     if (pic == null)
       res.send("could not have a pic")
     return res.json({ status: 200, myPic: pic })

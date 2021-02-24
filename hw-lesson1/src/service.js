@@ -5,19 +5,18 @@ export async function createUser(user) {
     console.log('createUser')
     await axios.post('http://localhost:3500/createUser', user).then(
         res => {
-            res.status(200).json({ message: 'createUser work ' })
+            console.log('createpic work ' + JSON.stringify(res.data));
         },
         err => {
-            res.status(400).send('error! ' + err)
+            console.log('error createpic: ' + err);
         }
     )
 }
 
 export async function signUp(user) {
-    debugger
     await axios.post('http://localhost:3500/login', user).then(
         res => {
-            res.status(200).json({ message: 'signUP seccessfuly' })
+            console.log('signUP work ' + JSON.stringify(res.data))
             if (res.data) {
                 user.id = res.data._id
                 return (res.data)
@@ -25,32 +24,31 @@ export async function signUp(user) {
                 return "data is null";
         },
         err => {
-            res.status(400).send('error createUser: ' + err)
+            console.log('error createUser: ' + err);
             return false;
         }
     )
 }
 
 export async function createPicture(picture) {
-    console.log('createPic', picture)
-    debugger
     await axios.post('http://localhost:3500/createPicture', picture).then(
         res => {
-            res.status(200).json({ message: 'create pecture seccessfuly' })
+            console.log('createpic work ' + JSON.stringify(res.data));
         },
         err => {
-            res.status(400).send('error createpic: ' + err)
-
+            console.log('error createpic: ' + err);
         }
     )
 }
 
 export async function deletePicture(id) {
-    await axios.delete('http://localhost:3500/deletePic', { data: { id: id } })
+    await axios.delete('http://localhost:3500/deletePic', {
+        data: { id: id }
+    })
         .then(res => {
-            res.status(200).json({ message: 'seccessfuly deleted' })
+            console.log(JSON.stringify(res));
         },
             err => {
-                res.status(400).send('error get users: ' + err)
+                console.log('error get users ' + err);
             })
 }

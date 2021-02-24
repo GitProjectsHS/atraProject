@@ -12,7 +12,6 @@ export const actions = new Proxy(
           return {
             type: convertActionNameToType(prop),
             payload: args,
-            userId: prop.id,
           };
         };
 
